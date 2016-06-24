@@ -86,13 +86,15 @@ public class TaskRunner {
 		}
 		else {
 			piThreads = new PiThread [numberOfThreads];
-			numberOfPoints = 10000000;
+			numberOfPoints = 1000000;
 			pointsForThread = numberOfPoints / numberOfThreads;
 			
 			for (int t = 0; t < numberOfThreads; t++) {
+				/*
 				if (t == numberOfThreads - 1) {
 					pointsForThread = numberOfPoints - pointsForThread * (numberOfThreads - 1);
 				}
+				*/
 				
 				PiThread piThread = new PiThread("Thread-" + Integer.toString(t+1),
 						squareSideSize, pointsForThread, quietMode);

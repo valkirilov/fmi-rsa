@@ -1,4 +1,5 @@
 import java.util.Calendar;
+import java.util.Random;
 
 
 public class PiThread extends Thread {
@@ -20,15 +21,25 @@ public class PiThread extends Thread {
 
 	public void run() {
 		if (!quietMode) {
-			System.out.println(name + " started.");
+			System.out.println(name + " started. " + pointsForThread);
 		}
 		
 		// Let's track the execution time of the thread
 		//long startTimeOfThread = Calendar.getInstance().getTimeInMillis();
 		
 		for (long i = 0; i < pointsForThread; i++) {
-			long x = PiThread.getRandomNumber(0, squareSideSize);
-			long y = PiThread.getRandomNumber(0, squareSideSize);
+			//long x = PiThread.getRandomNumber(0, squareSideSize);
+			//long y = PiThread.getRandomNumber(0, squareSideSize);
+			
+			Random random = new Random();
+			long x = Math.abs(random.nextLong());
+			if (x > squareSideSize) {
+				x = x % squareSideSize;
+			}
+			long y = Math.abs(random.nextLong());
+			if (y > squareSideSize) {
+				y = y % squareSideSize;
+			}
 			
 			Point point = new Point(x, y);
 			if (PiThread.isPointInCircle((squareSideSize / 2), point)) {
@@ -40,7 +51,7 @@ public class PiThread extends Thread {
 		//long endTimeOfThread = Calendar.getInstance().getTimeInMillis();
 		
 		if (!quietMode) {
-			System.out.println(name + " stopped.");
+			System.out.println(name + " stopped. " + numberOfPointsInCircle);
 			//System.out.println(name + " execution time was (millis): " + (endTimeOfThread - startTimeOfThread));
 		}
 	}
