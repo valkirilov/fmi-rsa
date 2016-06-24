@@ -24,7 +24,7 @@ public class PiThread extends Thread {
 		}
 		
 		// Let's track the execution time of the thread
-		long startTimeOfThread = Calendar.getInstance().getTimeInMillis();
+		//long startTimeOfThread = Calendar.getInstance().getTimeInMillis();
 		
 		for (long i = 0; i < pointsForThread; i++) {
 			long x = PiThread.getRandomNumber(0, squareSideSize);
@@ -37,11 +37,11 @@ public class PiThread extends Thread {
 		}
 		
 		// Let's track the end of the execution of the thread
-		long endTimeOfThread = Calendar.getInstance().getTimeInMillis();
+		//long endTimeOfThread = Calendar.getInstance().getTimeInMillis();
 		
 		if (!quietMode) {
 			System.out.println(name + " stopped.");
-			System.out.println(name + " execution time was (millis): " + (endTimeOfThread - startTimeOfThread));
+			//System.out.println(name + " execution time was (millis): " + (endTimeOfThread - startTimeOfThread));
 		}
 	}
 
